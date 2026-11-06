@@ -4,10 +4,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CRUD Alunos</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./styles/style.css">
     <script src="./app/app.js" defer></script>
 </head>
 <body>
-    
+    <main>
+        <header class="header">
+            <h1>CRUD Alunos</h1>
+        </header>
+        <section class="form-section">
+            <form>
+                <fieldset>
+                    <legend>Cadastro de Alunos</legend>
+                    <label for="nome">Nome Completo</label>
+                    <input type="text" id="nome" name="nome" required>
+
+                    <label for="email">E-mail:</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="celular">Celular:</label>
+                    <input type="text" id="celular" name="celular" required>
+
+                    <label for="cidade">Cidade:</label>
+                    <input type="text" id="cidade" name="cidade" required>
+
+                    <label for="estado">Estado:</label>
+                    <input type="text" id="estado" name="estado" required>
+
+                    <label for="cep">CEP:</label>
+                    <input type="text" id="cep" name="cep" required>
+
+                    <button type="reset" class="clean-button">Limpar Campos</button>
+
+                    <button type="submit" class="submit-button">Salvar</button>
+                </fieldset>
+            </form>
+        </section>
+        <section class="table-section">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>E-mail</th>
+                        <th>Celular</th>
+                        <th>Cidade</th>
+                        <th>Estado</th>
+                        <th>CEP</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="alunos-table-body">
+                
+                </tbody>
+            </table>
+        </section>
+
+        <footer class="footer">
+            <p>&copy; 2023 CRUD Alunos. Todos os direitos reservados.</p>
+        </footer>
+    </main>
 </body>
 </html>
