@@ -6,6 +6,7 @@
     <title>CRUD Alunos</title>
     <link rel="stylesheet" href="./styles/style.css">
     <script src="./app/app.js" defer></script>
+    <script src="./app/api.js" defer></script>
 </head>
 <body>
     <main>
@@ -13,9 +14,10 @@
             <h1>CRUD Alunos</h1>
         </header>
         <section class="form-section">
-            <form>
+            <form id="aluno-form">
                 <fieldset>
                     <legend>Cadastro de Alunos</legend>
+                    <input type="hidden" id="aluno-id">
                     <label for="nome">Nome Completo</label>
                     <input type="text" id="nome" name="nome" required>
 
