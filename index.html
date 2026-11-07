@@ -1,13 +1,146 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CRUD Alunos</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./styles/style.css">
+    <script src="./app/api.js" defer></script>
     <script src="./app/app.js" defer></script>
 </head>
 <body>
-    
+    <main>
+        <header class="header">
+            <h1>CRUD Alunos</h1>
+        </header>
+
+        <section id="form-section" class="form-section card">
+            <form id="aluno-form">
+                <fieldset>
+                    <legend id="form-legend">Cadastro de Alunos</legend>
+                    <input type="hidden" id="aluno-id">
+
+                    <div class="form-group">
+                        <label for="nome">Nome Completo</label>
+                        <input type="text" id="nome" name="nome" placeholder="Ex: Maria Silva" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" name="email" placeholder="maria@email.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="celular">Celular</label>
+                        <input type="text" id="celular" name="celular" placeholder="11999998888" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cidade">Cidade</label>
+                        <input type="text" id="cidade" name="cidade" placeholder="São Paulo" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="estado">Estado</label>
+                        <input type="text" id="estado" name="estado" maxlength="2" placeholder="SP" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cep">CEP</label>
+                        <input type="text" id="cep" name="cep" maxlength="8" placeholder="01001000" required>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="reset" id="btn-limpar" class="btn btn-secondary">Limpar Campos</button>
+                        <button type="submit" id="btn-salvar" class="btn btn-primary">Salvar</button>
+                    </div>
+                </fieldset>
+            </form>
+        </section>
+
+        <section class="table-section card">
+            <div class="table-header">
+                <h2>Alunos Cadastrados</h2>
+                <div class="search-container">
+                    <input type="text" id="search-input" placeholder="Pesquisar aluno por nome...">
+                </div>
+            </div>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>E-mail</th>
+                            <th>Celular</th>
+                            <th>Cidade</th>
+                            <th>Estado</th>
+                            <th>CEP</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="alunos-table-body"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>&copy; 2026 CRUD Alunos. Todos os direitos reservados.</p>
+        </footer>
+
+        <dialog id="modal-editar" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Editar Aluno</h2>
+                    <button type="button" id="btn-fechar-modal" class="btn-close">&times;</button>
+                </div>
+                <form id="form-editar">
+                    <input type="hidden" id="edit-id">
+                    <div class="modal-grid">
+                        <div class="form-group">
+                            <label for="edit-nome">Nome Completo</label>
+                            <input type="text" id="edit-nome" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-email">E-mail</label>
+                            <input type="email" id="edit-email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-celular">Celular</label>
+                            <input type="text" id="edit-celular" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-cidade">Cidade</label>
+                            <input type="text" id="edit-cidade" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-estado">Estado</label>
+                            <input type="text" id="edit-estado" maxlength="2" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-cep">CEP</label>
+                            <input type="text" id="edit-cep" maxlength="8" required>
+                        </div>
+                    </div>
+                    <div class="modal-actions">
+                        <button type="button" id="btn-cancelar-modal" class="btn btn-secondary">Cancelar</button>
+                        <button type="submit" id="btn-salvar-modal" class="btn btn-primary">Salvar Alterações</button>
+                    </div>
+                </form>
+            </div>
+        </dialog>
+
+        <dialog id="delete-confirmation-dialog" class="modal modal-small">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Confirmar Exclusão</h2>
+                </div>
+                <p class="dialog-message">Tem certeza de que deseja excluir este aluno?</p>
+                <div class="modal-actions">
+                    <button type="button" id="cancel-delete" class="btn btn-secondary">Cancelar</button>
+                    <button type="button" id="confirm-delete" class="btn btn-danger">Excluir</button>
+                </div>
+            </div>
+        </dialog>
+    </main>
 </body>
 </html>
